@@ -1,0 +1,721 @@
+<style type="text/css">/* NTU Logo */
+    .NTU_Logo{top:1vmax;left:1vmax;position:absolute}
+    .NTU_Logo img{top:0;left:0;margin:0.5vmin;position:relative;width:16.8vmin;height:6vmin}
+
+    /* Overall main background color */
+    .reveal{background:#000000;width:100%;height:50vmax;padding:0;margin:0;position:relative;overflow:hidden}
+    .revealleft{width:50%;height:100%;margin:0vmin;padding:0.5vmin;position:absolute;left:0%}  
+    .revealright{width:50%;height:100%;margin:0vmin;padding:0vmin;position:absolute;right:0%} 
+
+    .reveal.portrait{height:130vmax}
+    .revealleft.load{width:100%;height:100%;position:relative}
+    .revealleft.show{width:100%;height:40%;position:relative}
+    .revealright.load{width:0%;height:0%;bottom:0%;position:relative}
+    .revealright.show{width:100%;height:62%;bottom:0%;position:relative}
+
+    .legendpanel p.portrait{font-size:1.2vmin;font-weight:bolder;margin:0}
+    .checklist.portrait{width:100%}
+
+    
+    .draft{position:absolute;top:2%;right:5%}
+    .draft p {font-size:1.5vmax;font-weight:bolder;margin:0;color:#E6E6E6}
+
+
+    .revealleft p{font-size:0.9vmax;font-weight:bolder;margin:0}
+    .revealright p{font-size:0.9vmax;font-weight:bolder;margin:0}
+
+    .revealleft h2{color:#E6E6E6;padding:0}
+    .revealright h2{color:#E6E6E6;padding:0}
+
+    .revealleft ul{font-size: 1vmax}
+    .revealright ul{font-size: 1vmax}
+
+    .revealleft ul.portrait{font-size: 2.2vmin}
+    .revealright ul.portrait{font-size: 2.2vmin}
+
+    .checklist1 ul{color:#E6E6E6}
+    .checklist5 ul{color:#000000}
+
+    .checklist1 a:link {
+    color: #f44336; 
+    background-color: transparent; 
+    text-decoration: none;
+    }
+
+    .checklist1 a:visited {
+    color: pink;
+    background-color: transparent;
+    text-decoration: none;
+    }
+
+    .checklist1 a:hover {
+    color: red;
+    background-color: transparent;
+    text-decoration: underline;
+    }
+
+    .checklist1 a:active {
+    color: yellow;
+    background-color: transparent;
+    text-decoration: underline;
+    }
+
+    .legend1 span{color:#E6E6E6}
+    .checklist3 h2{color:#8C8C8C}
+    .checklist4 h2{color:#8C8C8C}
+    
+    .logo{left:20%;top:52%;float:right;position:absolute}
+    canvas#logo{width:100%;height:100%;margin:-50% 50%;float:right}
+    .logoanchor{left:20%;top:52%;position:absolute}
+    .logocontent{width:12vmax;height:12vmax;margin:50% 50% 0 0;float:right;position:absolute}
+    canvas#logocontent{width:100%;height:100%;margin:-50% 50%;float:right}
+
+    .phase1{width:32vmax;height:32vmax;margin:0;transform:translate(-50%,-50%);position:absolute}
+    canvas#phase1line{width:100%;height:100%;margin:5% -10%;float:right}
+
+
+    .item1{width:8vmax;height:8vmax;margin:-17vmax 0 0 11vmax;float:right;position:absolute}
+    canvas#item1label{width:100%;height:100%;margin:-50% 50%;float:right}
+    .item3{width:8vmax;height:8vmax;margin:-8vmax 0 0 19vmax;float:right;position:absolute}
+    canvas#item3label{width:100%;height:100%;margin:-50% 50%;float:right}
+    .item4{width:8vmax;height:8vmax;margin:6vmax 0 0 19vmax;float:right;position:absolute}
+    canvas#item4label{width:100%;height:100%;margin:-50% 50%;float:right}
+    .item5{width:8vmax;height:8vmax;margin:15vmax 0 0 11vmax;float:right;position:absolute}
+    canvas#item5label{width:100%;height:100%;margin:-50% 50%;float:right}
+    
+    .checklist{width:90%;height:90%;padding:0vmin;margin-left:2vmin;float:right;right:0%;top:5%;position:absolute}
+    .checklist1{background:#0054A6;width:100%;height:100%;padding:3vmin;margin:5% 0% 0%;float:right;position:absolute;display:none}
+    .checklist3{background:#FFDD00;width:100%;height:100%;padding:3vmin;margin:5% 0% 0%;float:right;position:absolute;display:none}
+    .checklist4{background:#D5E04D;width:100%;height:100%;padding:3vmin;margin:5% 0% 0%;float:right;position:absolute;display:none}
+    .checklist5{background:#07B152;width:100%;height:100%;padding:3vmin;margin:5% 0% 0%;float:right;position:absolute;display:none}
+
+    .contentportrait{background:#c3c3c3;width:100%;height:1vh;padding:0;margin:0;position:relative;overflow:hidden} 
+    .contentlandscape{background:#c3c3c3;width:100%;height:100%;padding:0;margin:0;position:relative;overflow:hidden}
+</style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><!--Do NOT remove!--><!--Javascript logo animation original code courtesy of kegi/math-animation, at: https://github.com/kegi/math-animation--><!--Usage guidelines to edit Checklist content:--><!--Control-F and search for tags: 'item1','item2','item3',etc...--><!--Tag for hex color of logo background is Control-F for: //Logo background color--><!--Tag for hex color of animated lines in logo is Control-F for:  //Logo line color--><!--ctx.Filltext elements are fields to be replaced and filled for content to be displayed--><!--Main Javascript Library for Animations below (Open Research Checklist)--><script type="text/javascript">
+        $(document).ready(function () {
+            if((window.innerHeight > window.innerWidth)||((window.innerHeight + window.innerWidth)>3400)){
+                $('.legendpanel,.legendpanel p,.checklist, ul').toggleClass('portrait')
+                $('.revealleft,.revealright').toggleClass('load')
+            }
+        });
+    </script>
+<div class="reveal">
+    <div class="NTU_Logo"><img alt="" loading="lazy" src="https://libapps-au.s3-ap-southeast-2.amazonaws.com/accounts/213409/images/NTU_Logo.png" /></div>
+    <div class="revealleft">
+        
+        <div class="logo"><canvas id="logo">&nbsp;</canvas></div>
+
+        <div class="logoanchor">
+            <div class="logocontent"><canvas height="200%" id="logocontent" width="200%">&nbsp;</canvas></div>
+
+            <div class="phase1"><canvas height="500%" id="phase1line" width="500%">&nbsp;</canvas></div>
+
+            <div class="item1"><canvas height="200%" id="item1label" width="200%">&nbsp;</canvas></div>
+
+            <div class="item3"><canvas height="200%" id="item3label" width="200%">&nbsp;</canvas></div>
+
+            <div class="item4"><canvas height="200%" id="item4label" width="200%">&nbsp;</canvas></div>
+
+            <div class="item5"><canvas height="200%" id="item5label" width="200%">&nbsp;</canvas></div>
+        </div>
+    </div>
+
+    
+    <div class="draft">
+        <p>Draft Version 0</p>
+    </div>
+    <div class="revealright">
+        <div class="checklist">
+            <div class="checklist1">
+                <h2>OPEN METHODS</h2>
+
+                <p><font color="Gainsboro" face="arial" size="2"><a href="https://libguides.ntu.edu.sg/openscience/openmethods" target="_blank">Open Methods</a> require the public availability of detailed documentation of the processes, procedures and materials used in a research investigation.</font></p>
+
+                <p>&nbsp;</p>
+
+                <ul>
+                    <li>Have you included sufficient details that is needed for full replication?</li>
+                    <li>Have you considered <a href="https://www.cos.io/initiatives/prereg" target="_blank">pre-registration</a> or publishing a <a href="https://www.cos.io/initiatives/registered-reports" target="_blank">registered report</a>, where applicable?</li>
+                    <li>Have you included your plans for Open Methods in your <a href="https://libguides.ntu.edu.sg/rdm/dmptemplate" target="_blank">data management plan</a>?</li>
+                </ul>
+            </div>
+
+            <div class="checklist3">
+                <h2>OPEN ACCESS</h2>
+
+                <p><i><font color="gray" face="arial" size="2">&quot;<a href="https://libguides.ntu.edu.sg/openscience/openaccess" target="_blank">Open Access</a> literature is digital, online, free of charge, and free of most copyright and licensing restrictions.&quot; <a href="https://dash.harvard.edu/handle/1/10752204" target="_blank">(Suber, 2012</a>)</font></i></p>
+
+                <p>&nbsp;</p>
+
+                <ul>
+                    <li>Have you published <a href="https://libguides.ntu.edu.sg/openscience/OpenAccess" target="_blank">open access</a> whenever possible?</li>
+                    <li>Alternatively, have you uploaded an appropriate version of your publication to institutional open access digital repository (eg. <a href="https://dr.ntu.edu.sg/" target="_blank">DR-NTU</a> or <a href="https://repository.nie.edu.sg/" target="_blank">NIE Digital Repository</a>?</li>
+                    <li>Have you provided your <a href="https://orcid.org/" target="_blank">ORCID ID</a> to the publisher at the stage of manuscript submission?</li>
+                    <li>Have you included a <a href="https://libfaq.ntu.edu.sg/faq/262916" target="_blank">Data Availability Statement</a> in your manuscript?</li>
+                </ul>
+            </div>
+
+            <div class="checklist4">
+                <h2>OPEN DATA</h2>
+
+                <p><font color="gray" face="arial" size="2"><a href="https://libguides.ntu.edu.sg/rdm/howtosharedata" target="_blank">Open Data</a> refers to the public availability and reusability of that scientific data.</font></p>
+
+                <p>&nbsp;</p>
+
+                <ul>
+                    <li>Have you considered which parts of your research data can be made open?</li>
+                    <li>Have you provided adequate <a href="https://libguides.ntu.edu.sg/rdm/howtosharedata#documentation" target="_blank">documentation</a> and <a href="https://www.dcc.ac.uk/guidance/standards/metadata" target="_blank">metadata</a> for your research data, where applicable?</li>
+                    <li>Is your data stored in portable, <a href="https://ukdataservice.ac.uk/learning-hub/research-data-management/format-your-data/recommended-formats/" target="_blank">non-proprietary formats</a>?</li>
+                    <li>Have you shared non-sensitive research data and documentation for reuse in institutional open access (eg. <a href="https://researchdata.ntu.edu.sg/" target="_blank">DR-NTU (Data)</a>, <a href="https://researchdata.nie.edu.sg/" target="_blank">NIE Data Repository</a>) or external (e.g. subject-specific) data repositories under an open license, where legally and ethically permissible?</li>
+                    <li>Is there a <a href="https://datacite.org/" target="_blank">DataCite Digital Object Identifier (DOI)</a> for your open data?</li>
+                    <li>Is your data(set) FAIR (i.e. Findable, Accessible, Interoperable and Reusable)? Use the <a href="https://www.fairsfair.eu/tools-software" target="_blank">FAIR Assessment Tools</a> to check.</li>
+                </ul>
+            </div>
+
+            <div class="checklist5">
+                <h2>OPEN CODE</h2>
+
+                <p><i><font color="black" face="arial" size="2">&quot;<a href="https://libguides.ntu.edu.sg/openscience/opencode" target="_blank">Open Code</a> refers to custom, author-generated code used in a scientific research study... and subsequently made publicly available under an Open Access license via a linked repository, or as Supporting Information.&quot; <a href="https://plos.org/open-science/open-code/" target="_blank">(PLOS)</a></font></i></p>
+
+                <p>&nbsp;</p>
+
+                <ul>
+                    <li>If you have written code, have you documented your test protocol?</font></li>
+                    <li>Have you scripted your analysis, including data cleaning and wrangling, where applicable?</font></li>
+                    <li>Is your code well annotated and documented for ease of understanding and reuse?</font></li>
+                    <li>Has the use of all software versions and computing environments been documented where applicable?</font></li>
+                    <li>Are you able to openly share your code?</font></li>
+                    <li>If you have shared your code, have you shared it under an open license?</font></li>
+                    <li>Have you adopted the <a href="https://doi.org/10.15497/RDA00068" target="_blank">FAIR principles for research software</a>?</font></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        //Making translucent background for Logo below
+        var canvas = document.getElementById("logocontent");
+        var ctx = canvas.getContext("2d");
+        var logoradius = canvas.width/2
+
+        // Create gradient
+        var grd = ctx.createRadialGradient(logoradius, logoradius, 0.85 * logoradius, logoradius, logoradius, logoradius);
+        grd.addColorStop(0, "#D71440");
+        grd.addColorStop(0.9, "#A72244");
+
+        //Logo background color
+        ctx.fillStyle = grd;
+        ctx.globalAlpha = 0.85;
+        ctx.beginPath();
+        ctx.arc(logoradius, logoradius, logoradius, 0, 2 * Math.PI);
+        ctx.fill();
+
+        ctx.font = "28px Arial";
+        ctx.fillStyle = "#E6E6E6";
+        ctx.textAlign = "center";
+        ctx.textBaseline = 'middle'; 
+        ctx.fillText("NTU OPEN", logoradius/1, logoradius-canvas.width/6);
+        ctx.fillText("RESEARCH", logoradius/1, logoradius);
+        ctx.fillText("CHECKLIST", logoradius/1, logoradius+canvas.width/6);
+
+
+
+        var canvas = document.getElementById("phase1line");
+        var ctx = canvas.getContext("2d");
+        var logoradius = canvas.width/2.5
+
+        ctx.lineWidth = canvas.width/17
+        ctx.globalAlpha = 1;
+        ctx.beginPath();
+        ctx.arc(logoradius, logoradius*1.1, logoradius, 1 * Math.PI, 0.5 * Math.PI);
+        
+        // Create gradient
+        var grd = ctx.createLinearGradient(2.3*logoradius, 0.1*logoradius, 1.8 * Math.PI, 1 * Math.PI);
+        grd.addColorStop(0.1, "#C8C8C8");
+        grd.addColorStop(0.5, "black");
+
+        // Fill with gradient
+        ctx.strokeStyle = grd;
+        //ctx.strokeStyle = "#1875BC";
+        ctx.stroke();
+
+
+        var canvas = document.getElementById("item1label");
+        var ctx = canvas.getContext("2d");
+        var logoradius = canvas.width/2
+
+        //ctx.shadowBlur = 20;
+        //ctx.shadowColor = "white";
+
+        var grd = ctx.createRadialGradient(logoradius, logoradius, 0.85 * logoradius, logoradius, logoradius, logoradius);
+        grd.addColorStop(0.2, "#0054A6");
+        grd.addColorStop(0.5, "white");
+        grd.addColorStop(0.9, "#0054A6");
+
+        // Fill with gradient
+        //ctx.fillStyle = "#0054A6";
+        ctx.fillStyle = grd;
+        ctx.globalAlpha = 1;
+        ctx.beginPath();
+        ctx.arc(logoradius, logoradius, logoradius, 0, 2 * Math.PI);
+        ctx.fill();
+
+        ctx.font = "34px Arial";
+        ctx.fillStyle = "#E6E6E6";
+        ctx.textAlign = "center";
+        ctx.textBaseline = 'middle'; 
+        ctx.fillText("Open", logoradius/1, logoradius-canvas.width/10);
+        ctx.fillText("Methods​", logoradius/1, logoradius+canvas.width/10);
+
+                        
+        
+        var canvas = document.getElementById("item3label");
+        var ctx = canvas.getContext("2d");
+        var logoradius = canvas.width/2
+
+        var grd = ctx.createRadialGradient(logoradius, logoradius, 0.85 * logoradius, logoradius, logoradius, logoradius);
+        grd.addColorStop(0.2, "#FFDD00");
+        grd.addColorStop(0.5, "white");
+        grd.addColorStop(0.9, "#FFDD00");
+
+        // Fill with gradient
+        ctx.fillStyle = grd;
+
+        //ctx.fillStyle = "#FFDD00";
+        ctx.globalAlpha = 1;
+        ctx.beginPath();
+        ctx.arc(logoradius, logoradius, logoradius, 0, 2 * Math.PI);
+        ctx.fill();
+
+        ctx.font = "34px Arial";
+        ctx.fillStyle = "#8C8C8C";
+        ctx.textAlign = "center";
+        ctx.textBaseline = 'middle'; 
+        ctx.fillText("Open", logoradius/1, logoradius-canvas.width/10);
+        ctx.fillText("Access", logoradius/1, logoradius+canvas.width/10);
+
+        var canvas = document.getElementById("item4label");
+        var ctx = canvas.getContext("2d");
+        var logoradius = canvas.width/2
+
+        var grd = ctx.createRadialGradient(logoradius, logoradius, 0.85 * logoradius, logoradius, logoradius, logoradius);
+        grd.addColorStop(0.2, "#D5E04D");
+        grd.addColorStop(0.5, "white");
+        grd.addColorStop(0.9, "#D5E04D");
+
+        // Fill with gradient
+        ctx.fillStyle = grd;
+        
+        //ctx.fillStyle = "#D5E04D";
+        ctx.globalAlpha = 1;
+        ctx.beginPath();
+        ctx.arc(logoradius, logoradius, logoradius, 0, 2 * Math.PI);
+        ctx.fill();
+
+        ctx.font = "34px Arial";
+        ctx.fillStyle = "#8C8C8C";
+        ctx.textAlign = "center";
+        ctx.textBaseline = 'middle'; 
+        ctx.fillText("Open", logoradius/1, logoradius-canvas.width/10);
+        ctx.fillText("Data", logoradius/1, logoradius+canvas.width/10);
+
+        var canvas = document.getElementById("item5label");
+        var ctx = canvas.getContext("2d");
+        var logoradius = canvas.width/2
+
+        var grd = ctx.createRadialGradient(logoradius, logoradius, 0.85 * logoradius, logoradius, logoradius, logoradius);
+        grd.addColorStop(0.2, "#07B152");
+        grd.addColorStop(0.5, "white");
+        grd.addColorStop(0.9, "#07B152");
+
+
+        // Fill with gradient
+        ctx.fillStyle = grd;
+
+        //ctx.fillStyle = "#07B152";
+        ctx.globalAlpha = 1;
+        ctx.beginPath();
+        ctx.arc(logoradius, logoradius, logoradius, 0, 2 * Math.PI);
+        ctx.fill();
+
+        ctx.font = "34px Arial";
+        ctx.fillStyle = "#000000";
+        ctx.textAlign = "center";
+        ctx.textBaseline = 'middle'; 
+        ctx.fillText("Open", logoradius/1, logoradius-canvas.width/10);
+        ctx.fillText("Code", logoradius/1, logoradius+canvas.width/10);
+
+
+        var clicked = 0
+        $("#item1label").click(function(){
+            if((window.innerHeight > window.innerWidth)||((window.innerHeight + window.innerWidth)>3400) && clicked == 0){
+                $('.revealleft,.revealright').addClass('show');
+                $('.reveal').addClass('portrait');
+                clicked = 1
+            }
+            $(".checklist1").fadeIn(200);
+            $(".checklist3").fadeOut(100);
+            $(".checklist4").fadeOut(100);
+            $(".checklist5").fadeOut(100);
+        });
+        $("#item3label").click(function(){
+            if((window.innerHeight > window.innerWidth)||((window.innerHeight + window.innerWidth)>3400) && clicked == 0){
+                $('.revealleft,.revealright').addClass('show');
+                $('.reveal').addClass('portrait');
+                clicked = 1
+            }
+            $(".checklist3").fadeIn(200);
+            $(".checklist1").fadeOut(100);
+            $(".checklist4").fadeOut(100);
+            $(".checklist5").fadeOut(100);
+        });
+        $("#item4label").click(function(){
+            if((window.innerHeight > window.innerWidth)||((window.innerHeight + window.innerWidth)>3400) && clicked == 0){
+                $('.revealleft,.revealright').addClass('show');
+                $('.reveal').addClass('portrait');
+                clicked = 1
+            }
+            $(".checklist4").fadeIn(200);
+            $(".checklist3").fadeOut(100);
+            $(".checklist1").fadeOut(100);
+            $(".checklist5").fadeOut(100);
+        });
+        $("#item5label").click(function(){
+            if((window.innerHeight > window.innerWidth)||((window.innerHeight + window.innerWidth)>3400) && clicked == 0){
+                $('.revealleft,.revealright').addClass('show');
+                $('.reveal').addClass('portrait');
+                clicked = 1
+            }
+            $(".checklist5").fadeIn(200);
+            $(".checklist3").fadeOut(100);
+            $(".checklist4").fadeOut(100);
+            $(".checklist1").fadeOut(100);
+        });     
+    </script>
+    <script type="text/javascript">
+        function MathAnimation(options) {
+
+        this.initialize(options);
+        }
+
+        /**
+        * method initialize
+        * @param {object} options
+        */
+        MathAnimation.prototype.initialize = function (options) {
+
+        if (typeof options === 'undefined') {
+            options = {};
+        }
+
+        this.el = options.el || $('canvas#main')[0];
+        this.ctx = this.el.getContext('2d');
+
+        //0 = circle, >2 = polygon
+        this.shapeNbSides = typeof options.shapeNbSides !== undefined ? options.shapeNbSides : 0;
+
+        this.initialMultiplicator = options.initialMultiplicator || 2.01;
+        this.multiplicator = null;
+        this.multiplicatorStep = options.multiplicatorStep || 0.01;
+        this.minMultiplicator = options.minMultiplicator || 0;
+        this.maxMultiplicator = options.maxMultiplicator || 0;
+        this.multiplicatorIncrementing = true;
+
+        this.useInitialAnimation = typeof options.useInitialAnimation !== undefined ? options.useInitialAnimation : true;
+        this.initialAnimationDelay = options.animationDelay || 25;
+        this.animationDelay = null;
+        this.animationTimeout = null;
+        this.initialAnimationTimeout = null;
+
+        this.initialNbPoints = options.nbPoints || 360;
+        this.nbPoints = 0;
+        this.showPoints = typeof options.showPoints !== undefined ? options.showPoints : true;
+        this.pointSize = options.pointSize || 3;
+        this.pointColor = options.pointColor || '#444444';
+
+        this.lineColor = options.lineColor || '#0f0';
+        this.lineSecondaryColor = options.lineSecondaryColor || '#fff';
+        this.lineSecondarySize = options.lineSecondarySize || 3;
+
+        this.canvasSize = options.canvasSize || 650;
+        this.canvasPadding = options.canvasPadding || 10;
+        this.el.width = this.canvasSize;
+        this.el.height = this.canvasSize;
+
+        this.start();
+        };
+
+        /**
+        * @method start
+        */
+        MathAnimation.prototype.start = function () {
+
+        this.animationDelay = this.initialAnimationDelay;
+        this.multiplicator = this.initialMultiplicator;
+        this.nbPoints = 0;
+
+        clearTimeout(this.animationTimeout);
+        clearTimeout(this.initialAnimationTimeout);
+
+        if (this.useInitialAnimation) {
+            this.initialAnimation();
+        } else {
+            this.nbPoints = this.initialNbPoints;
+            this.calculatePoints();
+        }
+
+        this.run();
+        };
+
+        /**
+        * @method initialAnimation
+        */
+        MathAnimation.prototype.initialAnimation = function () {
+
+        if (this.nbPoints < this.initialNbPoints) {
+
+            this.nbPoints++;
+            this.calculatePoints();
+
+            this.initialAnimationTimeout = setTimeout(function () {
+                this.initialAnimation();
+            }.bind(this), 2500 / this.initialNbPoints);
+        }
+        };
+
+        /**
+        * @method run
+        */
+        MathAnimation.prototype.run = function () {
+
+        this.clear();
+        this.drawMainShape();
+        this.drawLines();
+
+        if (this.showPoints) {
+            this.drawPoints();
+        }
+
+        this.animationTimeout = setTimeout(function () {
+
+            if (this.multiplicatorIncrementing) {
+                this.multiplicator += this.multiplicatorStep;
+            } else {
+                this.multiplicator -= this.multiplicatorStep;
+            }
+
+            if (this.maxMultiplicator !== 0 && this.multiplicator >= this.maxMultiplicator) {
+                this.multiplicatorIncrementing = false;
+            } else {
+                if (this.minMultiplicator !== 0 && this.multiplicator <= this.minMultiplicator) {
+                    this.multiplicatorIncrementing = true;
+                }
+            }
+
+            $('#info').html(Math.round(this.multiplicator * 100) / 100);
+            this.run();
+
+        }.bind(this), this.animationDelay);
+        };
+
+        /**
+        * @method clear
+        */
+        MathAnimation.prototype.clear = function () {
+
+        this.ctx.clearRect(0, 0, this.canvasSize, this.canvasSize);
+        };
+
+        /**
+        * @method drawMainShape
+        */
+        MathAnimation.prototype.drawMainShape = function () {
+
+        var center = this.canvasSize / 2;
+
+        if (this.shapeNbSides === 0) {
+
+            var r = center - this.canvasPadding;
+
+            this.ctx.beginPath();
+            this.ctx.arc(center, center, r, 0, 2 * Math.PI, false);
+            this.ctx.lineWidth = 2;
+            this.ctx.strokeStyle = '#1B75BC';
+            this.ctx.stroke();
+        } else {
+
+            if (this.shapeNbSides >= 3) {
+
+                var size = center - this.canvasPadding;
+
+                this.ctx.beginPath();
+                this.ctx.moveTo(center + size * Math.cos(0), center + size * Math.sin(0));
+
+                for (var i = 1; i <= this.shapeNbSides; i++) {
+                    this.ctx.lineTo(center + size * Math.cos(i * 2 * Math.PI / this.shapeNbSides), center + size * Math.sin(i * 2 * Math.PI / this.shapeNbSides));
+                }
+
+                this.ctx.lineWidth = 1;
+                this.ctx.strokeStyle = "#fff";
+                this.ctx.stroke();
+            }
+        }
+        };
+
+        /**
+        * @method calculatePoints
+        */
+        MathAnimation.prototype.calculatePoints = function () {
+
+        this.points = {};
+
+        var center = this.canvasSize / 2;
+        var r = center - this.canvasPadding;
+        var sides = {};
+
+        if (this.shapeNbSides >= 3) {
+
+            var previousPos = {
+                x: center + r * Math.cos(0),
+                y: center + r * Math.sin(0)
+            };
+
+            for (var i = 1; i <= this.shapeNbSides; i++) {
+
+                var x = center + r * Math.cos(i * 2 * Math.PI / this.shapeNbSides);
+                var y = center + r * Math.sin(i * 2 * Math.PI / this.shapeNbSides);
+
+                sides[i - 1] = {
+                    x1: previousPos.x,
+                    y1: previousPos.y,
+                    x2: x,
+                    y2: y
+                };
+
+                previousPos.x = x;
+                previousPos.y = y;
+            }
+        }
+
+        for (i = 0; i < this.nbPoints; i++) {
+
+            if (this.shapeNbSides === 0) {
+
+                var rad = (((360 / this.nbPoints) * i) - 90) * Math.PI / 180;
+
+                this.points[i] = {
+                    x: center + r * Math.cos(rad),
+                    y: center + r * Math.sin(rad)
+                };
+            } else if (this.shapeNbSides >= 3) {
+
+                var v = i / (this.nbPoints / this.shapeNbSides);
+                var side = Math.floor(v);
+                var sidePos = sides[side];
+                var ratio = v - side;
+
+                this.points[i] = {
+                    x: ((sidePos.x2 - sidePos.x1) * ratio) + sidePos.x1,
+                    y: ((sidePos.y2 - sidePos.y1) * ratio) + sidePos.y1
+                };
+            }
+        }
+        };
+
+        /**
+        * @method drawLines
+        */
+        MathAnimation.prototype.drawLines = function () {
+
+        for (var point in this.points) {
+
+            if (!this.points.hasOwnProperty(point)) {
+                continue;
+            }
+
+            var oppositePoint = parseInt(point) + (this.nbPoints / 2);
+            if (oppositePoint > this.nbPoints) {
+                oppositePoint = oppositePoint - this.nbPoints;
+            }
+
+            var result = Math.round((point * this.multiplicator) % this.nbPoints);
+            if (result === this.nbPoints) {
+                result = 0;
+            }
+
+            var resultCoord = this.points[result];
+
+            var margin = Math.round(this.nbPoints / 15);
+            if (result >= (oppositePoint - margin) && result <= (oppositePoint + margin)) {
+
+                this.ctx.strokeStyle = this.lineSecondaryColor;
+                this.ctx.lineWidth = this.lineSecondarySize;
+            } else {
+                this.ctx.strokeStyle = this.lineColor;
+                this.ctx.lineWidth = 1;
+            }
+
+            if (!this.points.hasOwnProperty(result)) {
+                console.log(result);
+                return;
+            }
+
+            this.ctx.beginPath();
+            this.ctx.moveTo(this.points[point].x, this.points[point].y);
+            this.ctx.lineTo(resultCoord.x, resultCoord.y);
+            this.ctx.stroke();
+        }
+        };
+
+        /**
+        * @method drawPoints
+        */
+        MathAnimation.prototype.drawPoints = function () {
+
+        this.ctx.fillStyle = this.pointColor;
+
+        for (var point in this.points) {
+
+            if (!this.points.hasOwnProperty(point)) {
+                continue;
+            }
+
+            var pos = this.points[point];
+
+            this.ctx.beginPath();
+            this.ctx.arc(pos.x, pos.y, this.pointSize, 0, 2 * Math.PI, false);
+            this.ctx.fill();
+        }
+        };
+    </script>
+    <!--Rotating Canvas animation for Logo below-->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var anim = new MathAnimation({
+                    el: $('canvas#logo')[0],
+                    canvasSize: Math.max(window.innerWidth,window.innerHeight)/5,
+                    canvasPadding: 0,
+                    shapeNbSides: 0,
+                    useInitialAnimation: false,
+                    animationDelay: 30,
+                    multiplicatorStep: 0.0015,
+                    initialMultiplicator: 20,
+                    minMultiplicator: 10,
+                    maxMultiplicator: 540,
+                    nbPoints: 100,
+                    showPoints: false,
+                    //Logo line color
+                    lineColor: '#0054A6',
+                    //Logo secondary line color
+                    lineSecondaryColor: '#1B75BC',
+                    lineSecondarySize: 1
+                });
+                setInterval(function () {
+                    
+                    var min = 20;
+                    var max = 70;
+                    anim.multiplicatorStep = (Math.random() * (max - min) + min) / 10000;
+                }.bind(anim), 2000);
+        });
+    </script>
+</div>
